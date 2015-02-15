@@ -10,46 +10,185 @@
         <button id="button3" type="button">Italic Button!</button>
         <button id="button4" type="button">Text Change Button!</button>
         <button id="button5" type="button">Font Size Change Button!</button>
-    
-
+    <br />
+        <br />
+        <b>Check Box</b>
+        <br />
+        <input id="checkbox1" type="checkbox" name="vehicle" value="Bike"> <label for="checkbox1">Bike.........................................................</label>
+        <br />
+        <input id="checkbox2" type="checkbox" name="vehicle" value="Car" > <label for="checkbox2">Car</label>
+        <br />
+        <br />
+        <b>Labels</b> <br /> <br />
+        <label id="label1">Label 1</label> <br /> <br />
+        <label id="label2">Label 2</label> <br />
+        <br />
+        <b> TEXT Box </b> <br/><br/>
+        <input id="textbox1" type="text" >
+        <input id="textbox2" type="text" > <br />
+        <b> Password </b> <br /><br />
+        <input id="password1" type="password">
+        <input id="password2" type="password"> <br />
+        <br />
+        <b>Image :</b> <br />
+        <img id="image1" src="https://statproject.files.wordpress.com/2011/05/online.jpg" alt="Smiley face" >
         <script>
             var myVar = setInterval(function () { myTimer() }, 1000);
-
+           
             function myTimer() {
                 var d = new Date();
                 document.getElementById("time").innerHTML = d.toLocaleTimeString();
+               
               //  $("#button1").text('Changes');
                 //$("#button2").css('background-color', 'pink');
                // $("#button3").css('font-weight', 'bold');
               //  $("#button4").css('font-style', 'italic');
               //  $("#button5").css('font-size', '160%');
-         
+                //                $("#checkbox1").prop('checked', true);
+                // $("#checkbox1").prop('checked', false);
+
+               // $("#checkbox1 +label").html('Checked');
+                //$("#checkbox1").siblings('label').html("Some changes");
+                //$("#checkbox1 +label").css('background-color', 'pink');
+              //  $("#checkbox1 +label").css('font-weight', 'bold');
+                //  $("#checkbox1 +label").css('font-style', 'italic');
+                // $("#checkbox1 +label").css('font-size', '160%');
+                //$("#checkbox1 +label").css('height', '160%');
+               // $("#checkbox1 +label").css('color', 'red');
+                // $("#label1").css('color', 'red');
+                //    $("#label1").html("Some changes");
+               // $("#label1").css('fontFamily', 'monospace');
+                //  $("#label2").css('fontFamily', 'serif');
+                //$("#image1").attr('src', '');
+                //$("#textbox1").css('font-weight', 'bold');
+                //$("#textbox1").val('Changes');
+             /*   $("#textbox1").keypress(function (evt) {
+                    evt = (evt) ? evt : window.event;
+                    var charCode = (evt.which) ? evt.which : evt.keyCode;
+                    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                        return false;
+                    }
+                    return true;
+
+                }); */
+
                 $.getJSON('http://cs5610-sv27.rhcloud.com/getoneincremental', function (data) {
-                    //data is the JSON string
+                    //data is the JSON0string
                     console.log(data);
                     if (data == null) {
                         console.log("no changes found");
                     }
                     else {
-
+                        var element = data.element;
                         var elementid = "#".concat(data.elementid);
                         var property = data.property;
                         var updatedata = data.updatedata;
                         var id = data._id;
+                        console.log(element);
                         console.log(elementid);
                         console.log(property);
-                    
-                        if (property == "text"){
+                        if (element == "button") {
+                            if (property == "text") {
 
-                            $(elementid).text(updatedata);
+                                $(elementid).text(updatedata);
+                            }
+                            else if (property == "reload") {
+                                location.reload();
+                            }
+                            else {
+                                $(elementid).css(property, updatedata);
+                            }
+                        } else if (element == "checkbox") {
+                            if (property == "checked") {
+                                alert("came here");
+                                $(elementid).prop(property, updatedata);
+                            }
+                            else if (property == "labeltext") {
+
+                                $(elementid + "+ label").html(updatedata);
+                              
+                            } else if (property == "visible") {
+                                if (updatedata == "false")
+                                    $(elementid).hide();
+                                else
+                                    $(elementid).show();
+                            }
+                            else {//(property != "labeltext" && property != "checked") {
+                                $(elementid + "+ label").css(property, updatedata);
+                            }
+                        
                         }
-                        else if (property == "reload") {
-                            location.reload();
+                        else if (element == "label") {
+                         
+                            if (property == "text") {
+
+                                $(elementid).html(updatedata);
+
+                            } else if (property == "visible") {
+                                if (updatedata == "false")
+                                    $(elementid).hide();
+                                else
+                                    $(elementid).show();
+                            }
+                            else {//(property != "labeltext" && property != "checked") {
+                                $(elementid).css(property, updatedata);
+                            }
+
                         }
-                        else{
+                        else if (element == "text") {
+                            
+                            if (property == "text") {
+
+                                $(elementid).val(updatedata);
+
+                            }
+                            else if (property == "number") {
+                                if (updatedata == "true") {
+                                    $(elementid).keypress(function (evt) {
+                                        evt = (evt) ? evt : window.event;
+                                        var charCode = (evt.which) ? evt.which : evt.keyCode;
+                                        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                                            return false;
+                                        }
+                                        return true;
+
+                                    });
+                                } else {
+                                    $(elementid).keypress(function () {
+
+                                    });
+
+                                }
+                            } else if (property == "visible") {
+                                if (updatedata == "false")
+                                    $(elementid).hide();
+                                else
+                                    $(elementid).show();
+                            }
+                            else {
+                                $(elementid).css(property, updatedata);
+                            }
+                        } else if (element == "password") {
+
                             $(elementid).css(property, updatedata);
                         }
-                    var url = "http://cs5610-sv27.rhcloud.com/removeincremantalchangesById/enterid";
+                        else if (element == "image") {
+
+                            if (property == "url") {
+                                $(elementid).attr('src', updatedata);
+
+                            } else if (property == "visible") {
+                                if (updatedata == "false")
+                                    $(elementid).hide();
+                                else
+                                    $(elementid).show();
+                            }
+                            else {
+                                $(elementid).css(property, updatedata);
+                            }
+                        }
+                        var url = "http://cs5610-sv27.rhcloud.com/removeincremantalchangesById/enterid";
+
                     console.log(id);
                    url = url.replace("enterid", id);
                     console.log(url);
