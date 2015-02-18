@@ -18,12 +18,10 @@ Label
 http://cs5610-sv27.rhcloud.com/entryincrmentalchanges?element=label&elementid=label1&property=text&updatedata=I have changed
 http://cs5610-sv27.rhcloud.com/entryincrmentalchanges?element=label&elementid=label1&property=font-weight&updatedata=bold
 http://cs5610-sv27.rhcloud.com/entryincrmentalchanges?element=label&elementid=label1&property=font-style&updatedata=italic
-http://cs5610-sv27.rhcloud.com/entryincrmentalchanges?element=label&elementid=label1&property=font-size&updatedata=120%
-http://cs5610-sv27.rhcloud.com/entryincrmentalchanges?element=label&elementid=label1&property=font-style&updatedata=italic
+http://cs5610-sv27.rhcloud.com/entryincrmentalchanges?element=label&elementid=label1&property=font-size&updatedata=120%	
 http://cs5610-sv27.rhcloud.com/entryincrmentalchanges?element=label&elementid=label1&property=width&updatedata=100px
 http://cs5610-sv27.rhcloud.com/entryincrmentalchanges?element=label&elementid=label1&property=fontFamily&updatedata=monospace
 http://cs5610-sv27.rhcloud.com/entryincrmentalchanges?element=label&elementid=label1&property=background-color&updatedata=pink
-
 http://cs5610-sv27.rhcloud.com/entryincrmentalchanges?element=label&elementid=label1&property=visible&updatedata=true
 http://cs5610-sv27.rhcloud.com/entryincrmentalchanges?element=label&elementid=label1&property=visible&updatedata=false
 ====================================================================================
